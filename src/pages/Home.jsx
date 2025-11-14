@@ -239,7 +239,7 @@ const Home = () => {
           </p>
           <Link
             to="/contact"
-            className="inline-block bg-white text-primary px-8 py-3 rounded-full hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl font-medium"
+            className="inline-block bg-white text-primary px-8 py-3 rounded-full hover:bg-primary hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl font-medium"
           >
             Schedule a Free Consultation
           </Link>
