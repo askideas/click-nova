@@ -155,7 +155,7 @@ const Home = () => {
                 <p className="text-gray-600 leading-relaxed mb-6 flex-grow">{service.description}</p>
                 <button
                   onClick={() => setIsQuoteModalOpen(true)}
-                  className="inline-block text-center bg-primary text-white px-6 py-2.5 rounded-lg hover:bg-primary-dark transition-all duration-300 font-medium w-full"
+                  className="inline-block text-center bg-primary text-white px-6 py-2.5 rounded-lg hover:bg-primary-dark transition-all duration-300 font-medium w-full cursor-pointer"
                 >
                   Get Free Quote
                 </button>

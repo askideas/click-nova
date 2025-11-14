@@ -180,7 +180,7 @@ const Training = () => {
 
                 <button
                   onClick={() => setIsTrainingModalOpen(true)}
-                  className="inline-block text-center bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark transition-all duration-300 font-medium shadow-md hover:shadow-lg w-full"
+                  className="inline-block text-center bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark transition-all duration-300 font-medium shadow-md hover:shadow-lg w-full cursor-pointer"
                 >
                   Enroll Now
                 </button>

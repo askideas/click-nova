@@ -61,7 +61,7 @@ const FreeQuoteModal = ({ isOpen, onClose }) => {
             <h2 className="text-2xl font-bold text-white">Get Free Quote</h2>
             <button
               onClick={onClose}
-              className="text-white hover:text-gray-200 transition-colors duration-300"
+              className="text-white hover:text-gray-200 transition-colors duration-300 cursor-pointer"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -127,7 +127,7 @@ const FreeQuoteModal = ({ isOpen, onClose }) => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-primary-dark transition-all duration-300 shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-primary-dark transition-all duration-300 shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
             >
               {isSubmitting ? 'Submitting...' : 'Submit Request'}
             </button>
