@@ -56,9 +56,9 @@ const FreeQuoteModal = ({ isOpen, onClose }) => {
       {/* Modal */}
       <div className="relative bg-white rounded-2xl shadow-2xl max-w-md w-full mx-4 max-h-[90vh] overflow-y-auto">
         {/* Header */}
-        <div className="bg-gradient-to-r from-primary to-primary-dark text-white p-6 rounded-t-2xl">
+        <div className="bg-primary p-6 rounded-t-2xl">
           <div className="flex justify-between items-center">
-            <h2 className="text-2xl font-bold">Get Free Quote</h2>
+            <h2 className="text-2xl font-bold text-white">Get Free Quote</h2>
             <button
               onClick={onClose}
               className="text-white hover:text-gray-200 transition-colors duration-300"
@@ -68,7 +68,7 @@ const FreeQuoteModal = ({ isOpen, onClose }) => {
               </svg>
             </button>
           </div>
-          <p className="text-sm text-gray-100 mt-2">Fill in your details and we'll get back to you shortly</p>
+          <p className="text-sm text-white mt-2">Fill in your details and we'll get back to you shortly</p>
         </div>
 
         {/* Form */}
