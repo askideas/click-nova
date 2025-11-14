@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import FreeQuoteModal from '../components/FreeQuoteModal';
 
 const Services = () => {
+  const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
+
   const services = [
     {
       title: 'Social Media Marketing',
@@ -247,6 +250,11 @@ const Services = () => {
 
   return (
     <div className="min-h-screen pt-16">
+      <FreeQuoteModal 
+        isOpen={isQuoteModalOpen} 
+        onClose={() => setIsQuoteModalOpen(false)} 
+      />
+      
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-gray-50 to-gray-100 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -291,12 +299,12 @@ const Services = () => {
                     </li>
                   ))}
                 </ul>
-                <Link
-                  to="/contact"
-                  className="inline-block text-center bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark transition-all duration-300 font-medium shadow-md hover:shadow-lg"
+                <button
+                  onClick={() => setIsQuoteModalOpen(true)}
+                  className="inline-block text-center bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark transition-all duration-300 font-medium shadow-md hover:shadow-lg w-full"
                 >
                   Get Free Quote
-                </Link>
+                </button>
               </div>
             ))}
           </div>

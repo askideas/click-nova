@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import TrainingModal from '../components/TrainingModal';
 
 const Training = () => {
+  const [isTrainingModalOpen, setIsTrainingModalOpen] = useState(false);
+
   const courses = [
     {
       title: 'Full Stack Development',
@@ -109,6 +112,8 @@ const Training = () => {
 
   return (
     <div className="min-h-screen pt-16">
+      <TrainingModal isOpen={isTrainingModalOpen} onClose={() => setIsTrainingModalOpen(false)} />
+      
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-gray-50 to-gray-100 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -173,12 +178,12 @@ const Training = () => {
                   </ul>
                 </div>
 
-                <Link
-                  to="/contact"
-                  className="inline-block text-center bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark transition-all duration-300 font-medium shadow-md hover:shadow-lg"
+                <button
+                  onClick={() => setIsTrainingModalOpen(true)}
+                  className="inline-block text-center bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark transition-all duration-300 font-medium shadow-md hover:shadow-lg w-full"
                 >
                   Enroll Now
-                </Link>
+                </button>
               </div>
             ))}
           </div>
