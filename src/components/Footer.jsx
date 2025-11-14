@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Logo from '../assets/Logo-w.png'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -10,7 +11,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="col-span-1 md:col-span-2">
-            <h3 className="text-2xl font-bold text-white mb-4">Click Nova</h3>
+            <img src={Logo} alt="" className='w-[230px]' />
             <p className="text-gray-400 mb-4">
               Your trusted partner in digital marketing. We help businesses grow their online presence
               and achieve measurable results through innovative strategies.
