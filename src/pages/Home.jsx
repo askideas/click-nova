@@ -66,6 +66,121 @@ const Home = () => {
         </div>
       </section>
 
+      {/* CLICK NOVA Meaning Section */}
+      <section className="py-20 bg-white relative overflow-hidden">
+        {/* Animated Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-0 left-1/4 w-72 h-72 bg-primary rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
+          <div className="absolute bottom-0 right-1/4 w-72 h-72 bg-primary rounded-full mix-blend-multiply filter blur-xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          {/* Section Header */}
+          <div className="text-center mb-16">
+            <div className="inline-block mb-4">
+              <span className="bg-primary/10 text-primary px-6 py-2 rounded-full text-sm font-semibold tracking-wider">
+                OUR DNA
+              </span>
+            </div>
+            <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+              The Power of <span className="text-primary relative">
+                CLICK NOVA
+                <svg className="absolute -bottom-2 left-0 w-full" height="8" viewBox="0 0 200 8" fill="none">
+                  <path d="M0 4C50 4 50 4 100 4C150 4 150 4 200 4" stroke="#2286b6" strokeWidth="3" strokeLinecap="round"/>
+                </svg>
+              </span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Every letter represents a commitment to excellence and innovation
+            </p>
+          </div>
+
+          {/* Main Grid - Vertical Stacked Cards */}
+          <div className="max-w-5xl mx-auto space-y-8">
+            {[
+              { letter: 'C', word: 'CREATIVITY', icon: '🎨', description: 'Innovative solutions that set you apart from the competition', color: 'from-purple-500 to-purple-600', borderColor: 'border-purple-500', hoverBorderColor: 'hover:border-purple-500' },
+              { letter: 'L', word: 'LOYALTY', icon: '🤝', description: 'Building long-term partnerships based on trust and dedication', color: 'from-blue-500 to-blue-600', borderColor: 'border-blue-500', hoverBorderColor: 'hover:border-blue-500' },
+              { letter: 'I', word: 'INNOVATION', icon: '💡', description: 'Cutting-edge strategies that drive measurable growth', color: 'from-indigo-500 to-indigo-600', borderColor: 'border-indigo-500', hoverBorderColor: 'hover:border-indigo-500' },
+              { letter: 'C', word: 'COLLABORATION', icon: '👥', description: 'Working together as one team towards your success', color: 'from-cyan-500 to-cyan-600', borderColor: 'border-cyan-500', hoverBorderColor: 'hover:border-cyan-500' },
+              { letter: 'K', word: 'KNOWLEDGE', icon: '📚', description: 'Expert insights and industry-leading guidance', color: 'from-teal-500 to-teal-600', borderColor: 'border-teal-500', hoverBorderColor: 'hover:border-teal-500' },
+              { letter: 'N', word: 'NURTURING', icon: '🌱', description: 'Growing your business with care and attention to detail', color: 'from-green-500 to-green-600', borderColor: 'border-green-500', hoverBorderColor: 'hover:border-green-500' },
+              { letter: 'O', word: 'OPPORTUNITY', icon: '🚀', description: 'Creating new possibilities for your brand to thrive', color: 'from-emerald-500 to-emerald-600', borderColor: 'border-emerald-500', hoverBorderColor: 'hover:border-emerald-500' },
+              { letter: 'V', word: 'VISIONARY', icon: '🎯', description: 'Forward-thinking approach to digital transformation', color: 'from-orange-500 to-orange-600', borderColor: 'border-orange-500', hoverBorderColor: 'hover:border-orange-500' },
+              { letter: 'A', word: 'AGILITY', icon: '⚡', description: 'Quick adaptation to market changes and trends', color: 'from-rose-500 to-rose-600', borderColor: 'border-rose-500', hoverBorderColor: 'hover:border-rose-500' },
+            ].map((item, index) => (
+              <div 
+                key={index}
+                className={`group relative bg-gradient-to-r from-white to-gray-50 rounded-2xl p-8 shadow-md hover:shadow-2xl transition-all duration-500 border-l-4 ${item.borderColor} ${item.hoverBorderColor} hover:border-l-8 cursor-pointer`}
+              >
+                <div className="flex items-start gap-6">
+                  {/* Left Side - Letter Circle */}
+                  <div className="flex-shrink-0">
+                    <div className="relative">
+                      <div className={`w-20 h-20 bg-gradient-to-br ${item.color} rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500`}>
+                        <span className="text-3xl font-black text-white">{item.letter}</span>
+                      </div>
+                      {/* Icon Badge */}
+                      <div className={`absolute -bottom-2 -right-2 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-md border-2 ${item.borderColor} group-hover:scale-110 transition-transform duration-300`}>
+                        <span className="text-xl">{item.icon}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Right Side - Content */}
+                  <div className="flex-1 pt-2">
+                    <div className="flex items-center gap-3 mb-3">
+                      <h3 className="text-2xl font-bold text-gray-900 group-hover:text-primary transition-colors duration-300">
+                        {item.word}
+                      </h3>
+                      {/* Arrow */}
+                      <svg 
+                        className="w-6 h-6 text-primary opacity-0 group-hover:opacity-100 transform translate-x-0 group-hover:translate-x-2 transition-all duration-300" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        viewBox="0 0 24 24"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                      </svg>
+                    </div>
+                    <p className="text-gray-600 leading-relaxed text-lg">
+                      {item.description}
+                    </p>
+                  </div>
+
+                  {/* Number Badge */}
+                  <div className="hidden lg:block flex-shrink-0">
+                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                      <span className="text-sm font-bold text-primary group-hover:text-white">
+                        {String(index + 1).padStart(2, '0')}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Progress Bar on Hover */}
+                <div className="absolute bottom-0 left-0 h-1 bg-primary w-0 group-hover:w-full transition-all duration-700 rounded-b-2xl"></div>
+              </div>
+            ))}
+          </div>
+
+          {/* Bottom CTA */}
+          <div className="text-center mt-16">
+            <p className="text-lg text-gray-600 mb-6">
+              These values define who we are and how we serve our clients every single day
+            </p>
+            <Link
+              to="/about"
+              className="inline-flex items-center gap-2 text-primary hover:text-primary-dark font-semibold text-lg group cursor-pointer"
+            >
+              Learn more about our story
+              <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Services Preview */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

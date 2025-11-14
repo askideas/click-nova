@@ -146,7 +146,7 @@ const Navbar = () => {
             <Link
               to="/contact"
               onClick={() => setIsMenuOpen(false)}
-              className="px-4 py-3 rounded-lg text-base font-medium bg-gradient-to-r from-primary to-[#1a6a91] text-white text-center mt-4 shadow-md hover:shadow-lg transition-all duration-300"
+              className="px-4 py-3 rounded-lg text-base font-medium bg-primary text-white text-center mt-4 shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer"
             >
               Get Started
             </Link>
