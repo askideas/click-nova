@@ -99,8 +99,18 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-          <p>&copy; {currentYear} Click Nova. All rights reserved.</p>
+        <div className="border-t border-gray-800 mt-8 pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center text-gray-400">
+            <p className="mb-4 md:mb-0">&copy; {currentYear} Click Nova. All rights reserved.</p>
+            <div className="flex gap-6">
+              <Link to="/privacy-policy" className="hover:text-primary transition-colors duration-300">
+                Privacy Policy
+              </Link>
+              <Link to="/terms-conditions" className="hover:text-primary transition-colors duration-300">
+                Terms & Conditions
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
