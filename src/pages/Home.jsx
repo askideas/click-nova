@@ -48,10 +48,10 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { number: '500+', label: 'Clients Served' },
-              { number: '98%', label: 'Success Rate' },
-              { number: '2.5M+', label: 'Leads Generated' },
-              { number: '15+', label: 'Years Experience' },
+              { number: '150+', label: 'Clients Served' },
+              { number: '100%', label: 'Success Rate' },
+              { number: '5.5M+', label: 'Leads Generated' },
+              { number: '8+', label: 'Years Experience' },
             ].map((stat, index) => (
               <div key={index} className="text-center text-white">
                 <div className="text-4xl md:text-5xl font-bold mb-2">{stat.number}</div>
@@ -140,7 +140,7 @@ const Home = () => {
             ].map((service, index) => (
               <div
                 key={index}
-                className="bg-gray-50 p-8 rounded-xl hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-primary"
+                className="bg-gray-50 p-8 rounded-xl hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-primary flex flex-col"
               >
                 <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
                   <svg className="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -148,7 +148,13 @@ const Home = () => {
                   </svg>
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">{service.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{service.description}</p>
+                <p className="text-gray-600 leading-relaxed mb-6 flex-grow">{service.description}</p>
+                <Link
+                  to="/contact"
+                  className="inline-block text-center bg-primary text-white px-6 py-2.5 rounded-lg hover:bg-primary-dark transition-all duration-300 font-medium"
+                >
+                  Get Free Quote
+                </Link>
               </div>
             ))}
           </div>

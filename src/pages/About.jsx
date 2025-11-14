@@ -23,12 +23,12 @@ const About = () => {
               <h2 className="text-4xl font-bold text-gray-900 mb-6">Our Story</h2>
               <div className="space-y-4 text-gray-600 leading-relaxed">
                 <p>
-                  Founded in 2010, Click Nova emerged from a simple idea: businesses deserve a digital marketing
+                  Founded in 2018, Click Nova emerged from a simple idea: businesses deserve a digital marketing
                   partner that truly understands their unique challenges and aspirations. What started as a small
                   team of three has grown into a full-service digital marketing agency with over 50 professionals.
                 </p>
                 <p>
-                  Over the years, we've helped more than 500 businesses across various industries transform their
+                  Over the years, we've helped more than 150+ businesses across various industries transform their
                   digital presence and achieve remarkable growth. Our success is built on a foundation of
                   transparency, innovation, and unwavering commitment to client success.
                 </p>
@@ -155,7 +155,7 @@ const About = () => {
       </section>
 
       {/* Team Section */}
-      <section className="py-20 bg-gray-50">
+      {/* <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Meet Our Leadership</h2>
@@ -195,7 +195,7 @@ const About = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Stats Section */}
       <section className="py-20 bg-primary">
@@ -206,10 +206,10 @@ const About = () => {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { number: '500+', label: 'Happy Clients' },
-              { number: '15+', label: 'Years in Business' },
-              { number: '50+', label: 'Team Members' },
-              { number: '98%', label: 'Client Retention' },
+              { number: '150+', label: 'Happy Clients' },
+              { number: '8+', label: 'Years in Business' },
+              { number: '15+', label: 'Team Members' },
+              { number: '100%', label: 'Client Retention' },
             ].map((stat, index) => (
               <div key={index} className="text-center text-white">
                 <div className="text-5xl font-bold mb-2">{stat.number}</div>

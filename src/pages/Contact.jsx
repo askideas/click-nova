@@ -1,17 +1,55 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 const Contact = () => {
+  const services = [
+    'Social Media Marketing',
+    'Search Engine Optimization (SEO)',
+    'Website Design & Development',
+    'Pay-Per-Click (PPC) Advertising',
+    'Logo Designing',
+    'Branding & Graphic Design',
+    'Content Marketing',
+    'Email Marketing',
+    'Keyword Research & Strategy',
+    'Online Reputation Management',
+    'Analytics & Reporting',
+    'AI Video Creation',
+    'Software Development',
+    'Mobile App Development',
+    'Facebook Ads Management',
+    'Instagram Ads Management',
+    'Google Ads',
+    'Digital Marketing',
+  ];
+
   const [formData, setFormData] = useState({
     name: '',
-    email: '',
-    phone: '',
-    company: '',
+    mobile: '',
+    city: '',
     service: '',
-    message: '',
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+  const dropdownRef = useRef(null);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const filteredServices = services.filter((service) =>
+    service.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,6 +59,15 @@ const Contact = () => {
     }));
   };
 
+  const handleServiceSelect = (service) => {
+    setFormData((prev) => ({
+      ...prev,
+      service: service,
+    }));
+    setSearchTerm('');
+    setIsDropdownOpen(false);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -28,14 +75,12 @@ const Contact = () => {
     // Simulate form submission
     setTimeout(() => {
       setIsSubmitting(false);
-      setSubmitMessage('Thank you for your message! We\'ll get back to you within 24 hours.');
+      setSubmitMessage('Thank you for your inquiry! We\'ll get back to you within 24 hours.');
       setFormData({
         name: '',
-        email: '',
-        phone: '',
-        company: '',
+        mobile: '',
+        city: '',
         service: '',
-        message: '',
       });
 
       // Clear success message after 5 seconds
@@ -68,108 +113,110 @@ const Contact = () => {
             <div>
               <h2 className="text-3xl font-bold text-gray-900 mb-6">Send Us a Message</h2>
               <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                      Full Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
-                      placeholder="John Doe"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                      Email Address *
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
-                      placeholder="john@example.com"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                      Phone Number
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
-                      placeholder="+1 (555) 123-4567"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
-                      Company Name
-                    </label>
-                    <input
-                      type="text"
-                      id="company"
-                      name="company"
-                      value={formData.company}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
-                      placeholder="Your Company"
-                    />
-                  </div>
-                </div>
-
                 <div>
-                  <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
-                    Service Interested In
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                    Full Name *
                   </label>
-                  <select
-                    id="service"
-                    name="service"
-                    value={formData.service}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
-                  >
-                    <option value="">Select a service</option>
-                    <option value="seo">SEO Optimization</option>
-                    <option value="social-media">Social Media Marketing</option>
-                    <option value="content">Content Marketing</option>
-                    <option value="ppc">PPC Advertising</option>
-                    <option value="email">Email Marketing</option>
-                    <option value="analytics">Analytics & Reporting</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                    Message *
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
                     onChange={handleChange}
                     required
-                    rows="6"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all resize-none"
-                    placeholder="Tell us about your project and goals..."
-                  ></textarea>
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
+                    placeholder="Enter your full name"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="mobile" className="block text-sm font-medium text-gray-700 mb-2">
+                    Mobile Number *
+                  </label>
+                  <input
+                    type="tel"
+                    id="mobile"
+                    name="mobile"
+                    value={formData.mobile}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
+                    placeholder="+91 9876543210"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="city" className="block text-sm font-medium text-gray-700 mb-2">
+                    City *
+                  </label>
+                  <input
+                    type="text"
+                    id="city"
+                    name="city"
+                    value={formData.city}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
+                    placeholder="Enter your city"
+                  />
+                </div>
+
+                <div ref={dropdownRef}>
+                  <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
+                    Required Service *
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="text"
+                      id="service"
+                      value={formData.service}
+                      onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                      readOnly
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all cursor-pointer"
+                      placeholder="Select a service"
+                    />
+                    <svg
+                      className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                    
+                    {isDropdownOpen && (
+                      <div className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-lg shadow-lg max-h-80 overflow-hidden">
+                        <div className="p-2 border-b border-gray-200">
+                          <input
+                            type="text"
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
+                            placeholder="Search services..."
+                            autoFocus
+                          />
+                        </div>
+                        <div className="max-h-64 overflow-y-auto">
+                          {filteredServices.length > 0 ? (
+                            filteredServices.map((service, index) => (
+                              <div
+                                key={index}
+                                onClick={() => handleServiceSelect(service)}
+                                className="px-4 py-2.5 hover:bg-primary hover:text-white cursor-pointer transition-colors duration-150"
+                              >
+                                {service}
+                              </div>
+                            ))
+                          ) : (
+                            <div className="px-4 py-2.5 text-gray-500 text-center">
+                              No services found
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 </div>
 
                 <button
@@ -215,9 +262,9 @@ const Contact = () => {
                   </div>
                   <div className="ml-4">
                     <h3 className="text-lg font-semibold text-gray-900 mb-1">Office Address</h3>
-                    <p className="text-gray-600">123 Marketing Street</p>
-                    <p className="text-gray-600">Digital City, DC 12345</p>
-                    <p className="text-gray-600">United States</p>
+                    <p className="text-gray-600">Janasakthi Nagar, Vedayapalem</p>
+                    <p className="text-gray-600">Nellore-4, Andhra Pradesh</p>
+                    <p className="text-gray-600">India</p>
                   </div>
                 </div>
 
@@ -233,9 +280,9 @@ const Contact = () => {
                     </svg>
                   </div>
                   <div className="ml-4">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-1">Phone</h3>
-                    <p className="text-gray-600">+1 (555) 123-4567</p>
-                    <p className="text-gray-600">Mon-Fri, 9am-6pm EST</p>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-1">Mobile</h3>
+                    <p className="text-gray-600">+91 9398638314</p>
+                    <p className="text-gray-600">Available 24/7</p>
                   </div>
                 </div>
 
@@ -252,8 +299,7 @@ const Contact = () => {
                   </div>
                   <div className="ml-4">
                     <h3 className="text-lg font-semibold text-gray-900 mb-1">Email</h3>
-                    <p className="text-gray-600">info@clicknova.com</p>
-                    <p className="text-gray-600">support@clicknova.com</p>
+                    <p className="text-gray-600">connect.clicknova@gmail.com</p>
                   </div>
                 </div>
               </div>
@@ -296,20 +342,15 @@ const Contact = () => {
 
               {/* Business Hours */}
               <div className="mt-10 bg-gray-50 p-6 rounded-xl">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Business Hours</h3>
-                <div className="space-y-2 text-gray-600">
-                  <div className="flex justify-between">
-                    <span>Monday - Friday:</span>
-                    <span className="font-medium">9:00 AM - 6:00 PM</span>
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">Working Hours</h3>
+                <div className="text-center">
+                  <div className="inline-flex items-center justify-center bg-primary/10 text-primary px-6 py-3 rounded-lg">
+                    <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span className="font-semibold text-lg">Available 24/7</span>
                   </div>
-                  <div className="flex justify-between">
-                    <span>Saturday:</span>
-                    <span className="font-medium">10:00 AM - 4:00 PM</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Sunday:</span>
-                    <span className="font-medium">Closed</span>
-                  </div>
+                  <p className="text-gray-600 mt-3">We're here to help you anytime, anywhere</p>
                 </div>
               </div>
             </div>
